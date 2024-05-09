@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <script src="url.js"></script>
+  <script>const form = document.querySelector("form");
+    const input = document.querySelector("input");
+    const remove = document.querySelectorAll('body > :not(#particles-js)');
+    
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      window.navigator.serviceWorker
+        .register("./sw.js", {
+          scope: __uv$config.prefix,
+        })
+        .then(() => {
+          let url = input.value.trim();
+          if (!isUrl(url)) url = "https://www.google.com/search?q=" + url;
+          else if (!(url.startsWith("https://") || url.startsWith("http://")))
+            url = "http://" + url;
+          localStorage.setItem("encodedUrl", __uv$config.encodeUrl(url));
+          remove.forEach(element => {
+            element.remove();
+          });
+          location.href = "/student";
+        });
+    });
+    
+    function isUrl(val = "") {
+      if (
+        /^http(s?):\/\//.test(val) ||
+        (val.includes(".") && val.substr(0, 1) !== " ")
+      )
+        return true;
+      return false;
+    }</script>
+  <title>Skibidi Indians</title>
+ 
+</head>
+<body>
+
+
+  <div style="text-align:center;color:white;margin-top: 80px;z-index:1;" class="themesExcluded">
+    <div class="themesExcluded">
+      <i class="bi bi-search search" id="search"></i>
+      <form method="POST" id="uform" autocomplete="off" class="themesExcluded" style="z-index:1;">
+        <input type="text" name="url" class="form__input proxybar themesExcluded" id="name" tag="searchbar" style="font-family:poppins;font-size:20px;z-index:1;" placeholder="Type URL or search query"><p class="splashText themesExcluded" id="placeholder"></p>
+      </form>
+    </div>
+    <p id="time" class="clock footer"></p>
+    <div class="footer themesExcluded" style="text-align:right;">
+      <a href="https://discord.gg/sWPHCdxCPU" target="new"><i class="bi bi-discord"></i></a>
+      <a href="https://github.com/dogenetwork/v4" target="new"><i class="bi bi-github"></i></a>
+    </div>
+    <div class="bottom-right-content themesExcluded">
+    <a href="/credits">Credits</a>
+  </div>
+  <script rel="preload" src="./main.js"></script>
+  <script src="/assets/js/themes.js"></script>
+  <script src="/assets/js/particles.js"></script>
+  <script src="./url.js"></script>
+</div>
+<script type='text/javascript' src='//pl22991509.profitablegatecpm.com/df/d2/e1/dfd2e1c094b00a158058ce0068d7df84.js'></script>
+</body>
+</html>
